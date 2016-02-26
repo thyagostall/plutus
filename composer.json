@@ -1,14 +1,14 @@
 {
-
   "require": {
-    "silex/silex": "^1.3"
-  }
+    "silex/silex": "^1.3",
+    "doctrine/orm": "^2.5"
+  },
   "autoload": {
     "psr-4": {
-      "Plutus\\": {
+      "Plutus\\": [
         "src/Plutus",
         "tests/Plutus"
-      }
+      ]
     }
   }
 }
