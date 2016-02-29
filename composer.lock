@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f3add444737d632e6051da82348c8998",
-    "content-hash": "2fa566a994b61c370667fbd4c91d609f",
+    "hash": "08e8ca7c5b1de3ee8077e8fa435dbbba",
+    "content-hash": "3fe9439f125d64ed808fcf85cfbbcc28",
     "packages": [
         {
             "name": "dflydev/doctrine-orm-service-provider",
@@ -1488,7 +1488,52 @@
             "time": "2016-02-03 16:53:37"
         }
     ],
-    "packages-dev": [],
+    "packages-dev": [
+        {
+            "name": "heroku/heroku-buildpack-php",
+            "version": "v94",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/heroku/heroku-buildpack-php.git",
+                "reference": "d88631c227eda4bb32dae72a1d1c047eef2f94dc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/heroku/heroku-buildpack-php/zipball/d88631c227eda4bb32dae72a1d1c047eef2f94dc",
+                "reference": "d88631c227eda4bb32dae72a1d1c047eef2f94dc",
+                "shasum": ""
+            },
+            "bin": [
+                "bin/heroku-hhvm-apache2",
+                "bin/heroku-hhvm-nginx",
+                "bin/heroku-php-apache2",
+                "bin/heroku-php-nginx"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Zuelke",
+                    "email": "dz@heroku.com"
+                }
+            ],
+            "description": "Toolkit for starting a PHP application locally, with or without foreman, using the same config for PHP/HHVM and Apache2/Nginx as on Heroku",
+            "homepage": "http://github.com/heroku/heroku-buildpack-php",
+            "keywords": [
+                "apache",
+                "apache2",
+                "foreman",
+                "heroku",
+                "hhvm",
+                "nginx",
+                "php"
+            ],
+            "time": "2016-02-26 19:27:49"
+        }
+    ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {

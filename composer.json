@@ -7,6 +7,9 @@
     "symfony/console": "2.6.*",
     "zendframework/zend-hydrator": "@stable"
   },
+  "require-dev": {
+    "heroku/heroku-buildpack-php": "*"
+  },
   "autoload": {
     "psr-4": {
       "Plutus\\": [
