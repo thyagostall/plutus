@@ -2,7 +2,7 @@
 
 namespace Plutus\Entity;
 
-use Doctrine\ORM;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\MappedSuperClass

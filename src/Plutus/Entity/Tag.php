@@ -1,12 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: thyago
- * Date: 2/26/16
- * Time: 6:07 PM
- */
 
 namespace Plutus\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
@@ -15,13 +11,13 @@ namespace Plutus\Entity;
 class Tag extends Entity
 {
     /**
-     * @ORM\Column(type="string", maxlength=100)
+     * @ORM\Column(type="string", length=100)
      * @var String
      */
     private $title;
 
     /**
-     * @OneToMany(targetEntity="Transaction", mappedBy="tag")
+     * @ORM\OneToMany(targetEntity="Transaction", mappedBy="tag")
      */
     private $transactions;
 

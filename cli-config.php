@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: thyago
+ * Date: 2/19/16
+ * Time: 6:15 PM
+ */
 
 $loader = require __DIR__.'/vendor/autoload.php';
 
@@ -27,7 +33,7 @@ $config->setAutoGenerateProxyClasses(true);
 // Driver (4)
 $driverImpl = new Doctrine\ORM\Mapping\Driver\AnnotationDriver(
     new Doctrine\Common\Annotations\AnnotationReader(),
-    array(__DIR__.'/src/Workshop/Entity')
+    array(__DIR__.'/src/Plutus/Entity')
 );
 $config->setMetadataDriverImpl($driverImpl);
 

@@ -4,7 +4,7 @@ namespace Plutus\Entity;
 
 
 use DateTime;
-use Doctrine\ORM;
+use Doctrine\ORM\Mapping as ORM;
 
 
 /**
@@ -26,13 +26,13 @@ class Transaction extends Entity
     private $amount;
 
     /**
-     * @ORM\Column(type="string", maxlength=100)
+     * @ORM\Column(type="string", length=100)
      * @var String
      */
     private $description;
 
     /**
-     * @ManyToOne(targetEntity="Tag", inverseBy="transactions")
+     * @ORM\ManyToOne(targetEntity="Tag", inversedBy="transactions")
      */
     private $tag;
 
