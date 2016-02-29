@@ -6,6 +6,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 use Dflydev\Silex\Provider\DoctrineOrm\DoctrineOrmServiceProvider;
 use Silex\Application;
+use Silex\Provider\DoctrineServiceProvider;
 
 $config = require_once __DIR__ . '/config/config.php';
 if (!$config || !is_array($config)) {
@@ -15,7 +16,7 @@ if (!$config || !is_array($config)) {
 $app = new Application();
 $app['debug'] = true;
 
-$app->register(new \Silex\Provider\DoctrineServiceProvider(), array(
+$app->register(new DoctrineServiceProvider(), array(
     'db.options' => $config['db.options']
 ));
 
@@ -37,7 +38,7 @@ $app->register(new DoctrineOrmServiceProvider(), array(
 ));
 
 $app->get('/', function() {
-    return '';
+    return 'Hello World';
 });
 
 $app->run();
