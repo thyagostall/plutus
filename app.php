@@ -5,6 +5,7 @@ date_default_timezone_set('America/Sao_Paulo');
 require __DIR__ . '/vendor/autoload.php';
 
 use Dflydev\Silex\Provider\DoctrineOrm\DoctrineOrmServiceProvider;
+use Plutus\Entity\Tag;
 use Silex\Application;
 use Silex\Provider\DoctrineServiceProvider;
 
@@ -37,8 +38,25 @@ $app->register(new DoctrineOrmServiceProvider(), array(
     'orm.default_cache' => $config['db.options']['cache']
 ));
 
-$app->get('/', function() {
-    return 'Hello World';
+$app->get('/', function() use ($app) {
+    $entityManager = $app['orm.em'];
+
+//    $newTag = new Tag();
+//    $newTag->setTitle('A new tag ' . rand(1, 32768));
+//
+//    $entityManager->persist($newTag);
+//    $entityManager->flush();
+
+    $result = "<ul>";
+
+    $tagRepository = $entityManager->getRepository('Plutus\\Entity\\Tag');
+    $tags = $tagRepository->findAll();
+
+    foreach ($tags as $tag) {
+        $result .= "<li>" . $tag->getTitle() . "</li>";
+    }
+
+    return $result . "</ul>";
 });
 
 $app->run();

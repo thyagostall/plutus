@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: thyago
- * Date: 2/19/16
- * Time: 6:15 PM
- */
 
 $loader = require __DIR__.'/vendor/autoload.php';
 
@@ -45,12 +39,11 @@ if(extension_loaded('apc') && ini_get('apc.enabled'))
 }
 
 $connectionOptions = $configValues['db.options'];
-
-$em = \Doctrine\ORM\EntityManager::create($connectionOptions, $config);
+$entityManager = \Doctrine\ORM\EntityManager::create($connectionOptions, $config);
 
 return $helperSet = new \Symfony\Component\Console\Helper\HelperSet(array(
-    'db' => new \Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper($em->getConnection()),
-    'em' => new \Doctrine\ORM\Tools\Console\Helper\EntityManagerHelper($em),
+    'db' => new \Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper($entityManager->getConnection()),
+    'em' => new \Doctrine\ORM\Tools\Console\Helper\EntityManagerHelper($entityManager),
     new FormatterHelper(),
     new DialogHelper(),
     new ProgressHelper(),
