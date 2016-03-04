@@ -5,9 +5,11 @@ date_default_timezone_set('America/Sao_Paulo');
 require __DIR__ . '/vendor/autoload.php';
 
 use Dflydev\Silex\Provider\DoctrineOrm\DoctrineOrmServiceProvider;
+use Plutus\Controller\TagController;
 use Plutus\Entity\Tag;
 use Silex\Application;
 use Silex\Provider\DoctrineServiceProvider;
+use Symfony\Component\HttpFoundation\Request;
 
 $config = require_once __DIR__ . '/config/config.php';
 if (!$config || !is_array($config)) {
@@ -38,14 +40,20 @@ $app->register(new DoctrineOrmServiceProvider(), array(
     'orm.default_cache' => $config['db.options']['cache']
 ));
 
+$app->before(function(Request $request) {
+    if (0 === strpos($request->headers->get('Content-Type'), 'application/json')) {
+        $data = json_decode($request->getContent(), true);
+        $request->request->replace(is_array($data) ? $data : array());
+    }
+});
+
+$app->post('/tag', function(Request $request) use ($app) {
+    $controller = new TagController($app);
+    return $controller->insert($request);
+});
+
 $app->get('/', function() use ($app) {
     $entityManager = $app['orm.em'];
-
-//    $newTag = new Tag();
-//    $newTag->setTitle('A new tag ' . rand(1, 32768));
-//
-//    $entityManager->persist($newTag);
-//    $entityManager->flush();
 
     $result = "<ul>";
 
