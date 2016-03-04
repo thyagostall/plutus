@@ -36,6 +36,11 @@ class Transaction extends Entity
      */
     private $tag;
 
+    public function __construct()
+    {
+        $this->created = new DateTime();
+    }
+
     /**
      * @return DateTime
      */

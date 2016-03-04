@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: thyago
- * Date: 3/4/16
- * Time: 5:17 PM
- */
 
 namespace Plutus\Controller;
 
@@ -37,7 +31,7 @@ class TagController
 
         $entityManager->persist($newTag);
         $entityManager->flush();
-        return new JsonResponse(['result' => 'success']);
+        return $this->app->json(['result' => 'success']);
     }
 
 }
