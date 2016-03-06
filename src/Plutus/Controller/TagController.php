@@ -34,4 +34,21 @@ class TagController
         return $this->app->json(['result' => 'success']);
     }
 
+    public function get()
+    {
+        $entityManager = $this->app['orm.em'];
+        $transactionRepository = $entityManager->getRepository('Plutus\\Entity\\Tag');
+
+        $result = [];
+        $tags = $transactionRepository->findAll();
+        foreach ($tags as $tag) {
+            $jsonTag = [
+                'id' => $tag->getId(),
+                'title' => $tag->getTitle()
+            ];
+            array_push($result, $jsonTag);
+        }
+        return $this->app->json($result);
+    }
+
 }

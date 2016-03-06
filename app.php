@@ -7,7 +7,6 @@ require __DIR__ . '/vendor/autoload.php';
 use Dflydev\Silex\Provider\DoctrineOrm\DoctrineOrmServiceProvider;
 use Plutus\Controller\TagController;
 use Plutus\Controller\TransactionController;
-use Plutus\Entity\Tag;
 use Silex\Application;
 use Silex\Provider\DoctrineServiceProvider;
 use Symfony\Component\HttpFoundation\Request;
@@ -51,6 +50,11 @@ $app->before(function(Request $request) {
 $app->post('/tag', function(Request $request) use ($app) {
     $controller = new TagController($app);
     return $controller->insert($request);
+});
+
+$app->get('/tag', function() use ($app) {
+    $controller = new TagController($app);
+    return $controller->get();
 });
 
 $app->post('/transaction', function(Request $request) use ($app) {

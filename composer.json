@@ -5,7 +5,8 @@
     "dflydev/doctrine-orm-service-provider": "1.0.*@dev",
     "symfony/browser-kit": "2.6.*",
     "symfony/console": "2.6.*",
-    "zendframework/zend-hydrator": "@stable"
+    "zendframework/zend-hydrator": "@stable",
+    "cnam/security-jwt-service-provider": "1.*"
   },
   "require-dev": {
     "heroku/heroku-buildpack-php": "*"
