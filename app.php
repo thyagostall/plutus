@@ -5,8 +5,8 @@ date_default_timezone_set('America/Sao_Paulo');
 require __DIR__ . '/vendor/autoload.php';
 
 use Dflydev\Silex\Provider\DoctrineOrm\DoctrineOrmServiceProvider;
-use Plutus\Controller\TagController;
 use Plutus\Controller\TransactionController;
+use Plutus\Controller\UserController;
 use Silex\Application;
 use Silex\Provider\DoctrineServiceProvider;
 use Symfony\Component\HttpFoundation\Request;
@@ -47,16 +47,6 @@ $app->before(function(Request $request) {
     }
 });
 
-$app->post('/tag', function(Request $request) use ($app) {
-    $controller = new TagController($app);
-    return $controller->insert($request);
-});
-
-$app->get('/tag', function() use ($app) {
-    $controller = new TagController($app);
-    return $controller->get();
-});
-
 $app->post('/transaction', function(Request $request) use ($app) {
     $controller = new TransactionController($app);
     return $controller->create($request);
@@ -80,6 +70,12 @@ $app->get('/', function() use ($app) {
     }
 
     return $result . "</ul>";
+});
+
+$app->post('/signup', function(Request $request) use ($app) {
+
+    $userController = new UserController($app);
+    return $userController->register($request);
 });
 
 $app->run();

@@ -31,11 +31,6 @@ class Transaction extends Entity
      */
     private $description;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Tag", inversedBy="transactions")
-     */
-    private $tag;
-
     public function __construct()
     {
         $this->created = new DateTime();
@@ -79,21 +74,5 @@ class Transaction extends Entity
     public function setDescription($description)
     {
         $this->description = $description;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTag()
-    {
-        return $this->tag;
-    }
-
-    /**
-     * @param mixed $tag
-     */
-    public function setTag($tag)
-    {
-        $this->tag = $tag;
     }
 }
